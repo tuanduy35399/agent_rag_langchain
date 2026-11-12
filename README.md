@@ -11,3 +11,4 @@ markdown (.md) de agent co the:
 - Đọc lại kết quả cũ mà không cần tìm kiếm lại.
 - Dùng các file đó trong những bước tiếp theo như đối chiếu nguồn, tổng hợp báo cáo.
 
+[![Architecture diagram of tuanduy35399/agent_rag_langchain](https://gitdiagram.com/tuanduy35399/agent_rag_langchain/diagram.png)](https://gitdiagram.com/tuanduy35399/agent_rag_langchain?utm_source=readme&utm_medium=picture)
