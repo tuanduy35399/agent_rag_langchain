@@ -26,15 +26,27 @@ PDF_PATH= [
     'pdfs/python.pdf'
 ]
 
+def index_doc():
+    """
+        Chỉ chạy khi muốn thêm dữ liệu
+        python3 indexing.py
+        Chạy agent với dữ liệu đã có
+        python3 agent.py
+    """
+    docs = read_mutiple_pdfs(PDF_PATH)
+    text_splitter= RecursiveCharacterTextSplitter(chunk_size= 1000, chunk_overlap= 200)
+    all_splits= text_splitter.split_documents(docs)
 
-docs = read_mutiple_pdfs(PDF_PATH)
-text_splitter= RecursiveCharacterTextSplitter(chunk_size= 1000, chunk_overlap= 200)
-all_splits= text_splitter.split_documents(docs)
+    print(f"Split doc into {len(all_splits)} chunks")
 
-print(f"Split doc into {len(all_splits)} chunks")
+    for index, doc in enumerate(all_splits, start=1):
+        print(f"Dang luu {index}/{len(all_splits)}")
+        vector_store.add_documents(documents=[doc])
 
-for index, doc in enumerate(all_splits, start=1):
-    print(f"Dang luu {index}/{len(all_splits)}")
-    vector_store.add_documents(documents=[doc])
+    print(f"Indexed {len(all_splits)} chunks")
 
-print(f"Indexed {len(all_splits)} chunks")
+
+if __name__ == "__main__":
+    index_doc()
+
+    
